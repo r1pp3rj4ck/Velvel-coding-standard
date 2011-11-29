@@ -22,7 +22,7 @@ Installation
 
 4. Set Symfony2 as your default coding standard:
 
-        phpcs --config-set default_standard Symfony2
+        phpcs --config-set default_standard Velvel
 
 5. ...
 
