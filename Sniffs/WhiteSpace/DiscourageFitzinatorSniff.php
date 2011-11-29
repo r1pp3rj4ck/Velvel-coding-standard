@@ -7,7 +7,7 @@
  *
  * @author Justin Hileman <justin@shopopensky.com>
  */
-class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSniffer_Sniff
+class Velvel_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSniffer_Sniff
 {
 
     /**
@@ -52,6 +52,25 @@ class Symfony2_Sniffs_WhiteSpace_DiscourageFitzinatorSniff implements PHP_CodeSn
         if (($stackPtr < count($tokens) - 1) && $tokens[($stackPtr + 1)]['line'] === $line) {
             return;
         }
+
+        // TODO: make it work or get rid of it
+/*        $bol = $stackPtr;
+        do {
+            $bol--;
+        } while ($tokens[$bol]['content'] == "\x10");
+        $eol = $stackPtr;
+        do {
+            $eol++;
+        } while ($tokens[$eol]['content'] == "\x10");
+        $checker = false;
+        for ($i = $bol; $i < $eol; $i++){
+            if (($tokens[$i]['content'] == "\x10" or $tokens[$i]['content'] == "\x20") == false) {
+                $checker = true;
+            }
+        }
+        if ($checker == false) {
+            return;
+        }*/
 
         if (strpos($tokens[$stackPtr]['content'], "\n") > 0 || strpos($tokens[$stackPtr]['content'], "\r") > 0) {
             $warning = 'Please trim any trailing whitespace';

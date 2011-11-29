@@ -18,7 +18,7 @@ Installation
    phpcs `Standards` directory:
 
         cd /path/to/pear/PHP/CodeSniffer/Standards
-        git clone git://github.com/opensky/Symfony2-coding-standard.git Symfony2
+        git clone git://github.com/r1pp3rj4ck/Velvel-coding-standard Velvel
 
 4. Set Symfony2 as your default coding standard:
 
