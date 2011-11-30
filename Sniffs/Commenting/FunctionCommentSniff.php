@@ -18,7 +18,7 @@ if (class_exists('PEAR_Sniffs_Commenting_FunctionCommentSniff', true) === false)
  * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
  * @link      http://pear.php.net/package/PHP_CodeSniffer
  */
-class Symfony2_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenting_FunctionCommentSniff
+class Velvel_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenting_FunctionCommentSniff
 {
 
     /**
