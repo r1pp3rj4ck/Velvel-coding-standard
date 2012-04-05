@@ -31,6 +31,10 @@ class Velvel_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenti
      */
     protected function processReturn($commentStart, $commentEnd)
     {
+        if ($this->isInheritDoc()) {
+            return;
+        }
+
         $tokens = $this->currentFile->getTokens();
         $funcPtr = $this->currentFile->findNext(T_FUNCTION, $commentEnd);
 
@@ -50,6 +54,35 @@ class Velvel_Sniffs_Commenting_FunctionCommentSniff extends PEAR_Sniffs_Commenti
         }
 
     } /* end processReturn() */
+
+    /**
+     * Is the comment an inheritdoc?
+     *
+     * @return boolean True if the comment is an inheritdoc
+     */
+    protected function isInheritDoc ()
+    {
+        $content = $this->commentParser->getComment()->getContent();
+
+        return preg_match('#{@inheritdoc}#i', $content) === 1;
+    } // end isInheritDoc()
+
+    /**
+     * Process the function parameter comments.
+     *
+     * @param int $commentStart The position in the stack where
+     *                          the comment started.
+     *
+     * @return void
+     */
+    protected function processParams($commentStart)
+    {
+        if ($this->isInheritDoc()) {
+            return;
+        }
+
+        parent::processParams($commentStart);
+    } // end processParams()
 
     /**
      * Is the return statement matching?
